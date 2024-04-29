@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.danielprojetodb3.domain.dto.usuario.UsuarioRequestDTO;
 import com.example.danielprojetodb3.domain.dto.usuario.UsuarioResponseDTO;
+import com.example.danielprojetodb3.domain.exception.ResourseNotFoundException;
 import com.example.danielprojetodb3.domain.model.Usuario;
 import com.example.danielprojetodb3.domain.repository.UsuarioRepository;
 
@@ -35,7 +36,7 @@ public class UsuarioService implements ICrudService
     public UsuarioResponseDTO obterPorId(Long id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         if(usuario.isEmpty()){
-            //Lançar exceção
+            throw new ResourseNotFoundException("não foi possível obter o usuário com o id");
         }
         return mapper.map(usuario, UsuarioResponseDTO.class);
     }
