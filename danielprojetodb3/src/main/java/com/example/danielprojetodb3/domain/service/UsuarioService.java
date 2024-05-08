@@ -40,7 +40,7 @@ public class UsuarioService implements ICrudService
         if(usuario.isEmpty()){
             throw new ResourseNotFoundException("não foi possível obter o usuário com o id");
         }
-        return mapper.map(usuario, UsuarioResponseDTO.class);
+        return mapper.map(usuario.get(), UsuarioResponseDTO.class);
     }
 
     @Override
@@ -61,13 +61,15 @@ public class UsuarioService implements ICrudService
 
     @Override
     public UsuarioResponseDTO atualizar(Long id, UsuarioRequestDTO dto) {
-        obterPorId(id);
+        UsuarioResponseDTO usuarioBanco = obterPorId(id);
         if(dto.getEmail() == null || dto.getSenha() == null){
             throw new BadRequestException("Email e Senhas são Obrigatórios");
         }
         Usuario usuario = mapper.map(dto, Usuario.class);
         //criptografar senha
         usuario.setId(id);
+        usuario.setDataCadastro(usuarioBanco.getDataCadastro());
+        usuario.setDataInativacao(usuarioBanco.getDataInativacao());
         usuario = usuarioRepository.save(usuario);
         return mapper.map(usuario,UsuarioResponseDTO.class);
     }
