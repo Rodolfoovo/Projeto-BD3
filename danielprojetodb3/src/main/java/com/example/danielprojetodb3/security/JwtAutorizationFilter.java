@@ -1,10 +1,18 @@
 package com.example.danielprojetodb3.security;
 
+import java.io.IOException;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import com.example.danielprojetodb3.domain.model.Usuario;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class JwtAutorizationFilter extends BasicAuthenticationFilter {
 
@@ -24,6 +32,19 @@ public class JwtAutorizationFilter extends BasicAuthenticationFilter {
             return new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
         }
         return null;
+    }
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
+    FilterChain chain) throws IOException, ServletException{
+        String header = request.getHeader("Authorization");
+        if(header != null && header.startsWith("Bearer ")){
+            UsernamePasswordAuthenticationToken auth = getAuthenticationToken(header.substring(7));
+            if(auth!=null && auth.isAuthenticated()){
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            }
+        }
+        chain.doFilter(request,response);
+
     }
     
 }
