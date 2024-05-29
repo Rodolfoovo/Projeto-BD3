@@ -37,6 +37,11 @@ implements ICrudService<CentroDeCustoRequestDTO, CentroDeCustoResponseDTO>{
         if(optCentroDecusto.isEmpty()){
             throw new ResourseNotFoundException("Não foi possível encontrar");
         }
+        Usuario usuario = (Usuario) SecurityContextHolder
+        .getContext().getAuthentication().getPrincipal();
+        if(optCentroDecusto.get().getId() != usuario.getId()){
+            throw new ResourseNotFoundException("O centro de custo com o id:");
+        }
         return mapper.map(optCentroDecusto.get(), CentroDeCustoResponseDTO.class);
     }
 
