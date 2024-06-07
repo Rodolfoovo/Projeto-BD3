@@ -11,13 +11,14 @@ public class TituloResponseDTO {
     private Long id;
     private String descricao;
     private ETipoTitulo tipo;
-    private List<CentroDeCustoResponseDTO> centroDeCusto;
+    private List<CentroDeCustoResponseDTO> centrosDeCustos;
     private Double valor;
     private Date dataCadastro;
     private Date dataReferencia;
     private Date dataVencimento;
     private Date dataPagamento;
     private String observacao;
+    
     public Long getId() {
         return id;
     }
@@ -36,11 +37,11 @@ public class TituloResponseDTO {
     public void setTipo(ETipoTitulo tipo) {
         this.tipo = tipo;
     }
-    public List<CentroDeCustoResponseDTO> getCentroDeCusto() {
-        return centroDeCusto;
+    public List<CentroDeCustoResponseDTO> getCentrosDeCustos() {
+        return centrosDeCustos;
     }
-    public void setCentroDeCusto(List<CentroDeCustoResponseDTO> centroDeCusto) {
-        this.centroDeCusto = centroDeCusto;
+    public void setCentrosDeCustos(List<CentroDeCustoResponseDTO> centroDeCustos) {
+        this.centrosDeCustos = centroDeCustos;
     }
     public Double getValor() {
         return valor;

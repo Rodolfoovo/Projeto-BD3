@@ -85,4 +85,8 @@ public class TituloService implements ICrudService<TituloRequestDTO, TituloRespo
             throw new BadRequestException("Titulo invalido ");
         }
     }
+    public List<TituloResponseDTO> obterPorDataVencimento(String periodoInicial, String periodoFinal){
+        List<Titulo> titulos= tituloRepository.obterFluxoDeCaixaPorDataVencimento(periodoInicial,periodoFinal);
+        return titulos.stream().map(titulo -> mapper.map(titulo, TituloResponseDTO.class)).collect(Collectors.toList());
+    }
 }

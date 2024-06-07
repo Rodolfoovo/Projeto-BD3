@@ -1,26 +1,29 @@
-package com.example.danielprojetodb3.domain.dto.dashboard;
+package com.meusgastosta.meusgastosta.domain.dto.dashboard;
 
 import java.util.List;
 
-import com.example.danielprojetodb3.domain.dto.titulo.TituloResponseDTO;
+import com.meusgastosta.meusgastosta.domain.dto.titulo.TituloResponseDTO;
 
-public class DashBoardDTO {
+public class DashboardResponseDTO {
     private Double totalPagar;
     private Double totalReceber;
     private Double saldo;
     private List<TituloResponseDTO> titulosPagar;
     private List<TituloResponseDTO> titulosReceber;
 
-    public DashBoardDTO(){}
+    public DashboardResponseDTO(){}
 
-    public DashBoardDTO(Double totalPagar, double totalReceber, Double saldo, 
-    List<TituloResponseDTO> titulosPagar, List<TituloResponseDTO> titulosReceber){
+    public DashboardResponseDTO(Double totalPagar, Double totalReceber,
+    Double saldo, List<TituloResponseDTO> titulosPagar,
+    List<TituloResponseDTO> titulosReceber){
         this.totalPagar = totalPagar;
         this.totalReceber = totalReceber;
         this.saldo = saldo;
         this.titulosPagar = titulosPagar;
         this.titulosReceber = titulosReceber;
     }
+
+
     public Double getTotalPagar() {
         return totalPagar;
     }
@@ -51,5 +54,4 @@ public class DashBoardDTO {
     public void setTitulosReceber(List<TituloResponseDTO> titulosReceber) {
         this.titulosReceber = titulosReceber;
     }
-    
 }

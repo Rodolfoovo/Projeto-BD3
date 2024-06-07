@@ -1,4 +1,4 @@
-package com.example.danielprojetodb3.domain.model;
+package com.meusgastosta.meusgastosta.domain.model;
 
 import java.util.List;
 

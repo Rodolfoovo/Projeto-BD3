@@ -1,11 +1,10 @@
-package com.example.danielprojetodb3.domain.dto.titulo;
-
+package com.meusgastosta.meusgastosta.domain.dto.titulo;
 
 import java.util.Date;
 import java.util.List;
 
-import com.example.danielprojetodb3.domain.Enum.ETipoTitulo;
-import com.example.danielprojetodb3.domain.dto.centrodecusto.CentroDeCustoRequestDTO;
+import com.meusgastosta.meusgastosta.domain.Enum.ETipoTitulo;
+import com.meusgastosta.meusgastosta.domain.dto.centrodecusto.CentroDeCustoRequestDTO;
 
 public class TituloRequestDTO {
     private Long id;

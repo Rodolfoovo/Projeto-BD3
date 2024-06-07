@@ -6,7 +6,7 @@ public enum ETipoTitulo {
 
     private String valor;
 
-    private ETipoTitulo(String string) {
+    private ETipoTitulo(String valor) {
         this.valor = valor;
     }
 

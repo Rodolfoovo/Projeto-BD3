@@ -17,6 +17,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
+
 @Entity
 public class Titulo {
     @Id
@@ -30,18 +31,21 @@ public class Titulo {
     private Usuario usuario;
     private ETipoTitulo tipo;
     @ManyToMany
-    @JoinTable(name = "titulo_centrodecustos",
-    joinColumns = @JoinColumn(name = "idTitulo"),
-    inverseJoinColumns = @JoinColumn(name="idCentroDeCusto"))
+    @JoinTable(
+        name="titulo_centrodecustos",
+        joinColumns = @JoinColumn(name="idTitulo"),
+        inverseJoinColumns = @JoinColumn(name="idCentroDeCustos")
+    )
     private List<CentroDeCusto> centrosDeCustos;
     @Column(nullable = false)
     private Double valor;
     private Date dataCadastro;
     private Date dataReferencia;
     private Date dataVencimento;
-    @Column(columnDefinition = "TEXT")
     private Date dataPagamento;
+    @Column(columnDefinition = "TEXT")
     private String observacao;
+
     public Long getId() {
         return id;
     }
@@ -108,4 +112,9 @@ public class Titulo {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
+
+    
 }
+
+
+

@@ -1,23 +1,16 @@
-package com.example.danielprojetodb3.domain.dto.titulo;
-
+package com.meusgastosta.meusgastosta.domain.dto.titulo;
 
 import java.util.Date;
 import java.util.List;
 
-import com.example.danielprojetodb3.domain.Enum.ETipoTitulo;
-import com.example.danielprojetodb3.domain.dto.centrodecusto.CentroDeCustoRequestDTO;
+import com.meusgastosta.meusgastosta.domain.Enum.ETipoTitulo;
+import com.meusgastosta.meusgastosta.domain.dto.centrodecusto.CentroDeCustoResponseDTO;
 
-public class TituloRequestDTO {
+public class TituloResponseDTO {
     private Long id;
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
     private String descricao;
     private ETipoTitulo tipo;
-    private List<CentroDeCustoRequestDTO> centrosDeCustos;
+    private List<CentroDeCustoResponseDTO> centrosDeCustos;
     private Double valor;
     private Date dataCadastro;
     private Date dataReferencia;
@@ -25,6 +18,12 @@ public class TituloRequestDTO {
     private Date dataPagamento;
     private String observacao;
     
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getDescricao() {
         return descricao;
     }
@@ -37,10 +36,10 @@ public class TituloRequestDTO {
     public void setTipo(ETipoTitulo tipo) {
         this.tipo = tipo;
     }
-    public List<CentroDeCustoRequestDTO> getCentrosDeCustos() {
+    public List<CentroDeCustoResponseDTO> getCentrosDeCustos() {
         return centrosDeCustos;
     }
-    public void setCentrosDeCustos(List<CentroDeCustoRequestDTO> centroDeCustos) {
+    public void setCentrosDeCustos(List<CentroDeCustoResponseDTO> centroDeCustos) {
         this.centrosDeCustos = centroDeCustos;
     }
     public Double getValor() {
